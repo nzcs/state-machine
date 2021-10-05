@@ -20,6 +20,7 @@
     <modules>
         <module>common</module>
         <module>simple-choice</module>
+        <module>simple-uml-choice</module>
     </modules>
 
     <properties>

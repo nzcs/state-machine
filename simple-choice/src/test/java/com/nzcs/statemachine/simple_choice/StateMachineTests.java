@@ -8,7 +8,7 @@ import org.springframework.statemachine.StateMachine;
 import reactor.core.publisher.Mono;
 
 @SpringBootTest
-public class StateMachineApplicationTests {
+public class StateMachineTests {
 
     @Autowired
     StateMachine<String, String> stateMachine;
