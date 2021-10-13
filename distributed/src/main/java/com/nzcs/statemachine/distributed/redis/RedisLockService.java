@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisLockService {
 
     final static String LOCK_PREFIX = "sm_lock:";
+    final static int LOCK_WAIT_TIME = 5;
     final static int LOCK_AT_MOST_UNTIL = 10;
     final RedissonClient redissonClient;
     final Map<String, RLock> locks = new ConcurrentHashMap<>();
@@ -38,8 +39,9 @@ public class RedisLockService {
         RLock lock = this.redissonClient.getLock(id);
         boolean result = false;
         try {
-            result = lock.tryLock(0, LOCK_AT_MOST_UNTIL, TimeUnit.SECONDS);
-            log.debug("Lock acquired for state machine with id {}: {}", id, result);
+            log.debug("Try to lock sm with id {}", id);
+            result = lock.tryLock(LOCK_WAIT_TIME, LOCK_AT_MOST_UNTIL, TimeUnit.SECONDS);
+            log.debug("Lock sm with id {}: {}", id, result);
             this.locks.put(id, lock);
             this.lockNumbers.put(id + Thread.currentThread().getId(), 1);
         } catch (InterruptedException e) {

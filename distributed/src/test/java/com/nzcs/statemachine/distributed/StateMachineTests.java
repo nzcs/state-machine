@@ -12,10 +12,6 @@ import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.service.StateMachineService;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -66,50 +62,5 @@ public class StateMachineTests {
 
         assertEquals("S2", a.getState().getId());
         assertEquals("S1", b.getState().getId());
-    }
-
-
-    @Test
-    void testLock() throws ExecutionException, InterruptedException {
-        CountDownLatch latch = new CountDownLatch(1);
-        List<Future<String>> futures = new ArrayList<>();
-        ExecutorService service = Executors.newFixedThreadPool(10);
-
-        StateMachine<String, String> a = stateMachineService.acquireStateMachine("A");
-
-        futures.add(
-                service.submit(
-                        () -> {
-                            a.sendEvent(Mono.just(MessageBuilder
-                                            .withPayload("E1").build()))
-                                    .blockLast();
-
-                            latch.countDown();
-                            return a.getState().getId();
-                        }
-                )
-        );
-
-
-//        futures.add(
-//                service.submit(
-//                        () -> {
-//                            latch.await();
-//                            sm.sendEvent(Mono.just(MessageBuilder
-//                                            .withPayload("E1").build()))
-//                                    .blockLast();
-//
-//                            return sm.getState().getId();
-//                        }
-//                )
-//        );
-
-        latch.await();
-
-
-        System.out.println("Result: ");
-        for (Future<String> f : futures) {
-            System.out.println(f.get());
-        }
     }
 }
