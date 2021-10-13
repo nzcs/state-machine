@@ -1,6 +1,6 @@
 package com.nzcs.statemachine.simple_uml_choice;
 
-import com.nzcs.statemachine.common.StateMachineListener;
+import com.nzcs.statemachine.common.LogListener;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ import org.springframework.statemachine.uml.UmlStateMachineModelFactory;
 @RequiredArgsConstructor
 public class StateMachineConfig extends StateMachineConfigurerAdapter<String, String> {
 
-    final StateMachineListener listener;
+    final LogListener listener;
 
 
     @Override
