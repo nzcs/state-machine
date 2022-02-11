@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
+import org.springframework.statemachine.StateMachineEventResult;
 import reactor.core.publisher.Mono;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class StateMachineTests {
@@ -16,9 +19,12 @@ public class StateMachineTests {
 
     @Test
     void uml_choice() {
-        stateMachine
+        StateMachineEventResult<String, String> result = stateMachine
                 .sendEvent(Mono.just(MessageBuilder
                         .withPayload("E1").build()))
-                .subscribe();
+                .blockLast();
+
+        assert result != null;
+        assertEquals("B", result.getRegion().getState().getId());
     }
 }

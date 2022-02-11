@@ -18,7 +18,7 @@ public class StateMachineTests {
 
 
     @Test
-    void choice() {
+    void choice() throws InterruptedException {
         StateMachine<String, String> a = factory.getStateMachine("A");
         a.sendEvent(Mono.just(MessageBuilder
                         .withPayload("RUN").build()))
@@ -30,10 +30,12 @@ public class StateMachineTests {
                 .blockLast();
 
         a.sendEvent(Mono.just(MessageBuilder
-                        .withPayload("CHOOSE").build()))
+                        .withPayload("CHOOSE").setHeader("pocs", "abc").build()))
                 .blockLast();
 
-        assertEquals("B", a.getState().getId());
+
+        assertEquals("B2", a.getState().getId());
         assertEquals("STEP_1", b.getState().getId());
     }
+
 }

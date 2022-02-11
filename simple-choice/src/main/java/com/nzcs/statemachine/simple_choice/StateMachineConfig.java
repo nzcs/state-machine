@@ -16,15 +16,22 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
 
     final LogListener listener;
     final ChoiceAction choiceAction;
+    final ActionB_Entry actionB_entry;
+    final ActionB_Exit actionB_exit;
+    final ActionB_Error actionB_error;
+    //    final ActionB actionB;
     final GuardToA guardToA;
     final GuardToB guardToB;
+    final GuardToC guardToC;
+    final ExceptionListener exceptionListener;
 
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<String, String> config) throws Exception {
         config.withConfiguration()
                 .autoStartup(true)
-                .listener(listener);
+                .listener(listener)
+                .listener(exceptionListener);
     }
 
     @Override
@@ -36,6 +43,7 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
                 .choice("CHOICE")
                 .state("A")
                 .state("B")
+                .state("B2")
                 .state("C")
                 .state("END");
     }
@@ -61,7 +69,15 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<String, St
                 .withChoice()
                 .source("CHOICE")
                 .first("A", guardToA)
-                .then("B", guardToB)
-                .last("C");
+                .then("B", guardToB, new ActionB())
+                .then("C", guardToC)
+                .last("D")
+
+                .and()
+
+                .withExternal()
+                .source("B").target("B2")
+
+        ;
     }
 }

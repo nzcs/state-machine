@@ -12,6 +12,6 @@ public class GuardToB implements Guard<String, String> {
     @Override
     public boolean evaluate(StateContext<String, String> context) {
         Map<Object, Object> variables = context.getExtendedState().getVariables();
-        return variables.get("X").equals("B");
+        return variables.get("X") != null && variables.get("X").equals("B");
     }
 }

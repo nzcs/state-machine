@@ -47,6 +47,9 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hTbbYQOpEeaiNLSABY7wHw" x="490" y="27" width="83"/>
           </children>
           <children xmi:type="notation:Shape" xmi:id="_hwzT4AOpEeaiNLSABY7wHw" type="State_Shape">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G4t-UFFGEeyYmcohoe3k1g" source="PapyrusCSSForceValue">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G4t-UVFGEeyYmcohoe3k1g" key="mutable" value="true"/>
+            </eAnnotations>
             <children xmi:type="notation:DecorationNode" xmi:id="_hwzT4gOpEeaiNLSABY7wHw" type="State_NameLabel">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ln3sEAOpEeaiNLSABY7wHw" width="83"/>
             </children>
@@ -55,6 +58,24 @@
             </children>
             <children xmi:type="notation:BasicCompartment" xmi:id="_A8UaAx8BEeysv4pT_STzNw" type="State_RegionCompartment">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hwzT5gOpEeaiNLSABY7wHw" y="-1" width="83"/>
+            </children>
+            <children xmi:type="notation:BasicCompartment" xmi:id="_GSbaYFFGEeyYmcohoe3k1g" type="compartment_shape_display">
+              <styles xmi:type="notation:TitleStyle" xmi:id="_GSbaYVFGEeyYmcohoe3k1g"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GSbaYlFGEeyYmcohoe3k1g"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_GWv5sFFGEeyYmcohoe3k1g" type="Behavior_EntryBehaviorLabel">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G4t-UlFGEeyYmcohoe3k1g" source="PapyrusCSSForceValue">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G4t-U1FGEeyYmcohoe3k1g" key="mutable" value="true"/>
+              </eAnnotations>
+              <element xmi:type="uml:OpaqueBehavior" href="simple-choice.uml#_qS3PsAn4EeacC7Ug7AKYJw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GWv5sVFGEeyYmcohoe3k1g" x="-10" y="-10"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_GW5qsFFGEeyYmcohoe3k1g" type="Behavior_ExitBehaviorLabel">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G4t-VFFGEeyYmcohoe3k1g" source="PapyrusCSSForceValue">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G4t-VVFGEeyYmcohoe3k1g" key="mutable" value="true"/>
+              </eAnnotations>
+              <element xmi:type="uml:OpaqueBehavior" href="simple-choice.uml#_qS3PsAn4EeacC7Ug7AKYJw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GW5qsVFGEeyYmcohoe3k1g" x="-10" y="-10"/>
             </children>
             <element xmi:type="uml:State" href="simple-choice.uml#_hwr_IAOpEeaiNLSABY7wHw"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hwzT4QOpEeaiNLSABY7wHw" x="490" y="127" width="83"/>

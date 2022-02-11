@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 @EnableRedisRepositories("org.springframework.statemachine.data.redis")
-//@EntityScan("org.springframework.statemachine.data.redis")
 @SpringBootApplication
 public class DistributedApplication {
 

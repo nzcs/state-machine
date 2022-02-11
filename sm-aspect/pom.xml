@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>state-machine</artifactId>
+        <groupId>com.nzcs</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>sm-aspect</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.statemachine</groupId>
+            <artifactId>spring-statemachine-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.nickwongdev</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.12.6</version>
+                <configuration>
+                    <!--<showWeaveInfo>true</showWeaveInfo>-->
+                    <source>11</source>
+                    <target>11</target>
+                    <Xlint>ignore</Xlint>
+                    <complianceLevel>11</complianceLevel>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+
+                    <!--                    <excludes>-->
+                    <!--                        <exclude>**/*.java</exclude>-->
+                    <!--                    </excludes>-->
+                    <showWeaveInfo/>
+                    <forceAjcCompile>true</forceAjcCompile>
+                    <sources/>
+                    <weaveDirectories>
+                        <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+                    </weaveDirectories>
+                    <!--<verbose>true</verbose>-->
+                    <!--<warn>constructorName,packageDefaultMethod,deprecation,maskedCatchBlocks,unusedLocals,unusedArguments,unusedImport</warn>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- IMPORTANT -->
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
